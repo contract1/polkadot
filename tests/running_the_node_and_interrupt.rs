@@ -1,3 +1,4 @@
+
 // Copyright 2020 Parity Technologies (UK) Ltd.
 // This file is part of Substrate.
 
@@ -23,11 +24,13 @@ pub mod common;
 #[tokio::test]
 #[cfg(unix)]
 async fn running_the_node_works_and_can_be_interrupted() {
+	
 	use nix::{
 		sys::signal::{
 			kill,
 			Signal::{self, SIGINT, SIGTERM},
 		},
+		
 		unistd::Pid,
 	};
 
@@ -46,13 +49,15 @@ async fn running_the_node_works_and_can_be_interrupted() {
 		assert!(cmd.try_wait().unwrap().is_none(), "the process should still be running");
 		kill(Pid::from_raw(cmd.id().try_into().unwrap()), signal).unwrap();
 		assert_eq!(
+			
 			common::wait_for(&mut cmd, 30).map(|x| x.success()),
 			Some(true),
 			"the pocess must exit gracefully after signal {}",
 			signal,
 		);
 	}
-
+	
 	run_command_and_kill(SIGINT).await;
 	run_command_and_kill(SIGTERM).await;
 }
+
