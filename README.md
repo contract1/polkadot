@@ -8,25 +8,28 @@ Implementation of a <https://polkadot.network> node in Rust based on the Substra
 [substrate-repo]: https://github.com/paritytech/substrate
 
 This repo contains runtimes for the Polkadot, Kusama, and Westend networks. The README provides
-information about installing the `polkadot` binary and developing on the codebase. For more
-specific guides, like how to be a validator, see the
+information about installing the `polkadot` binary and developing on the codebase. 
+
+For more specific guides, like how to be a validator, see the
 [Polkadot Wiki](https://wiki.polkadot.network/docs/getting-started).
 
 ## Installation
 
 If you just wish to run a Polkadot node without compiling it yourself, you may
-either run the latest binary from our
-[releases](https://github.com/paritytech/polkadot/releases) page, or install
+either run the latest binary from our [releases]
+
+(https://github.com/paritytech/polkadot/releases) page, or install
 Polkadot from one of our package repositories.
 
 Installation from the Debian or rpm repositories will create a `systemd`
-service that can be used to run a Polkadot node. This is disabled by default,
-and can be started by running `systemctl start polkadot` on demand (use
-`systemctl enable polkadot` to make it auto-start after reboot). By default, it
-will run as the `polkadot` user.  Command-line flags passed to the binary can
-be customized by editing `/etc/default/polkadot`. This file will not be
-overwritten on updating polkadot. You may also just run the node directly from
-the command-line.
+service that can be used to run a Polkadot node.
+This is disabled by default, and can be started by running `systemctl start polkadot` on demand (use
+`systemctl enable polkadot` to make it auto-start after reboot). 
+
+By default, it will run as the `polkadot` user.  Command-line flags passed to the binary can
+be customized by editing `/etc/default/polkadot'. 
+This file will not be overwritten on updating polkadot.
+You may also just run the node directly fromthe command-line.
 
 ### Debian-based (Debian, Ubuntu)
 
@@ -37,12 +40,16 @@ derivatives. Run the following commands as the `root` user.
 # Import the security@parity.io GPG key
 gpg --recv-keys --keyserver hkps://keys.mailvelope.com 9D4B2B6EB8F97156D19669A9FF0812D491B96798
 gpg --export 9D4B2B6EB8F97156D19669A9FF0812D491B96798 > /usr/share/keyrings/parity.gpg
+
 # Add the Parity repository and update the package index
 echo 'deb [signed-by=/usr/share/keyrings/parity.gpg] https://releases.parity.io/deb release main' > /etc/apt/sources.list.d/parity.list
 apt update
+
 # Install the `parity-keyring` package - This will ensure the GPG key
+
 # used by APT remains up-to-date
 apt install parity-keyring
+
 # Install polkadot
 apt install polkadot
 
@@ -55,10 +62,13 @@ Currently supports Fedora 32 and CentOS 8, and derivatives.
 ```bash
 # Install dnf-plugins-core (This might already be installed)
 dnf install dnf-plugins-core
+
 # Add the repository and enable it
 dnf config-manager --add-repo https://releases.parity.io/rpm/polkadot.repo
 dnf config-manager --set-enabled polkadot
+
 # Install polkadot (You may have to confirm the import of the GPG key, which
+
 # should have the following fingerprint: 9D4B2B6EB8F97156D19669A9FF0812D491B96798)
 dnf install polkadot
 ```
@@ -167,8 +177,11 @@ You can see your node on [telemetry] (set a custom name with `--name "my custom 
 ### Obtaining DOTs
 
 If you want to do anything on Polkadot, Kusama, or Westend, then you'll need to get an account and
-some DOT, KSM, or WND tokens, respectively. See the
+some DOT, KSM, or WND tokens, respectively. 
+
+See the 
 [claims instructions](https://claims.polkadot.network/) for Polkadot if you have DOTs to claim. For
+
 Westend's WND tokens, see the faucet
 [instructions](https://wiki.polkadot.network/docs/learn-DOT#getting-westies) on the Wiki.
 
